@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.law_code_flutter"
+    compileSdk = 33 
+
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17 
+        targetCompatibility = JavaVersion.VERSION_17 
+    }
+
+    kotlinOptions {
+        jvmTarget = "17" 
+    }
+
+    defaultConfig {
+        applicationId = "com.example.law_code_flutter"
+        minSdk = 21 // Минимальная поддержка Android 5.0 (Lollipop), стандарт для Flutter
+        targetSdk = 33 // Таргет на Android 13
+        versionCode = 1 // Можно обновить вручную или через flutter.versionCode
+        versionName = "1.0" // Можно обновить вручную или через flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug 
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+}
