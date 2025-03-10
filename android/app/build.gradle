@@ -6,30 +6,30 @@ plugins {
 
 android {
     namespace = "com.example.law_code_flutter"
-    compileSdk = 33 
-
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17 
-        targetCompatibility = JavaVersion.VERSION_17 
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
-        jvmTarget = "17" 
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
         applicationId = "com.example.law_code_flutter"
-        minSdk = 21 // Минимальная поддержка Android 5.0 (Lollipop), стандарт для Flutter
-        targetSdk = 33 // Таргет на Android 13
-        versionCode = 1 // Можно обновить вручную или через flutter.versionCode
-        versionName = "1.0" // Можно обновить вручную или через flutter.versionName
+        minSdk = 24
+        targetSdk = 33
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.debug 
+            signingConfig = signingConfigs.debug
         }
     }
 }
@@ -39,4 +39,6 @@ flutter {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
