@@ -22,10 +22,22 @@ class MainPage extends StatelessWidget {
                   );
                 }
               },
-              child: Text('102'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  backgroundColor: Colors.red, // Цвет фона кнопки
+                  padding: EdgeInsets.all(40),
+                  shape: CircleBorder(
+                    side: BorderSide(
+                      color: Colors.white, // Цвет границы
+                      width: 4, // Ширина границы
+                    ),
+                  )),
+              child: Text(
+                '102',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+                // Устанавливаем белый цвет текста
               ),
             ),
             SizedBox(height: 20),
@@ -35,7 +47,10 @@ class MainPage extends StatelessWidget {
                   SnackBar(content: Text('Экстренное сообщение отправлено')),
                 );
               },
-              child: Text('Отправить сигнал тревоги'),
+              child: Text(
+                'Отправить сигнал тревоги',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             SizedBox(height: 20),
             GestureDetector(
@@ -50,7 +65,7 @@ class MainPage extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/mini_map.png'), // Заглушка
+                    image: AssetImage('assets/images/mini_map.png'),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(10),

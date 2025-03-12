@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:label=" "
+        android:label="Qamqor Life"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -45,7 +45,7 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="79a8553a74989f4c2bb0f8b9ed7608982e69f479" />
+            android:value="AIzaSyBSbxEMIihoDxq906w9DMp6XWgwmW1iHgQ" />
 
         <receiver android:name=".SosWidgetProvider" android:exported="false">
             <intent-filter>

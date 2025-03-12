@@ -32,28 +32,40 @@ class _HomePageState extends State<HomePage> {
         index: _selectedIndex,
         children: _pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Главная',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF1E88E5),
+              Color(0xFF8E24AA)
+            ], // Градиент голубой-фиолетовый
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.build),
-            label: 'Услуги',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: 'Новости',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Профиль',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              offset: Offset(0, -2),
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная'),
+            BottomNavigationBarItem(icon: Icon(Icons.build), label: 'Услуги'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.article), label: 'Новости'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: const Color.fromARGB(255, 19, 54, 255),
+          unselectedItemColor: const Color.fromARGB(255, 116, 137, 255),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }

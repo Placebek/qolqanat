@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'auth_provider.dart';
-import 'main_page.dart';
-import 'services_page.dart';
-import 'news_page.dart';
-import 'profile_page.dart';
+import 'home_page.dart';
+import 'register_page.dart';
+import 'login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,70 +15,36 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => AuthProvider(),
       child: MaterialApp(
-        title: 'Мое Приложение',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: HomePage(),
-      ),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _pages = [
-    MainPage(),
-    ServicesPage(),
-    NewsPage(),
-    ProfilePage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _pages,
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.blue,
-              Colors.purple
-            ], // Градиент от синего к фиолетовому
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+        title: 'Jardem Alert', // Обновим название
+        theme: ThemeData(
+          primaryColor: Color(0xFF1E88E5), // Голубой
+          scaffoldBackgroundColor: Color(0xFFF5F7FA), // Светлый фон
+          textTheme: TextTheme(
+            bodyLarge: TextStyle(fontSize: 16, color: Color(0xFF212121)),
+            labelLarge: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF1E88E5),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              elevation: 4,
+            ),
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            filled: true,
+            fillColor: Colors.white,
+            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
-        child: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная'),
-            BottomNavigationBarItem(icon: Icon(Icons.build), label: 'Услуги'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.article), label: 'Новости'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue, // Белый цвет для выделенного элемента
-          unselectedItemColor: const Color.fromARGB(
-              255, 142, 198, 244), // Полупрозрачный белый для невыделенных
-          onTap: _onItemTapped,
-          backgroundColor:
-              Colors.transparent, // Прозрачный фон, чтобы виден был градиент
-        ),
+        home: HomePage(),
+        routes: {
+          '/register': (context) => RegisterPage(),
+          '/login': (context) => LoginPage(),
+        },
       ),
-    ); // Добавлена закрывающая скобка и точка с запятой
+    );
   }
 }
